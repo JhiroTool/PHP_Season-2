@@ -150,3 +150,42 @@ if(isset($_POST['btnRegister'])) {
         </table>
             </center>
 </form>
+
+<?php
+    include ("connections.php");
+    $view_query = mysqli_query($connections, "SELECT * FROM tbl_user");
+    echo "<table border='1', width='50%'>
+        <tr>
+            <th>Fisrtname</th>
+            <th>Middlename</th>
+            <th>Lastname</th>
+            <th>Gender</th>
+            <th>Preffix</th>
+            <th>Seven Digit</th>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>";
+    while ($row = mysqli_fetch_assoc($view_query)) {
+            $user_id = $row["id_user"];
+            $db_fisrt_name = $row["first_name"];
+            $db_middle_name = $row["middle_name"];
+            $db_last_name = $row["last_name"];
+            $db_gender = $row["gender"];
+            $db_preffix = $row["preffix"];
+            $db_seven_digit = $row["seven_digit"];
+            $db_email = $row["email"];
+            $db_password = $row["password"];
+
+    echo "<tr>
+            <td>$db_fisrt_name</td>
+            <td>$db_middle_name</td>
+            <td>$db_last_name</td>
+            <td>$db_gender</td>
+            <td>$db_preffix</td>
+            <td>$db_seven_digit</td>
+            <td>$db_email</td>
+            <td>$db_password</td>
+            
+          </tr>";
+} echo "</table>";
+?>
